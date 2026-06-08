@@ -31,7 +31,7 @@ export default function Trainers() {
           <span className="inline-block bg-green-100 text-green-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
             Our Trainers
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Learn from <span className="text-green-600">Industry Experts</span>
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
@@ -54,7 +54,7 @@ export default function Trainers() {
               <h3 className="text-xl font-bold text-gray-900 mb-1">{trainer.name}</h3>
               <p className="text-green-600 font-semibold text-sm mb-2">{trainer.role}</p>
               <p className="text-gray-500 text-sm mb-4">{trainer.specialty}</p>
-              <div className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-5">
+              <div className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">
                 {trainer.courses} Course{trainer.courses > 1 ? 's' : ''}
               </div>
             </motion.div>
