@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import certImg from '../assets/images/certificate.jpg'
 
 function Counter({ target, suffix = '' }) {
   const [count, setCount] = useState(0)
@@ -101,14 +102,12 @@ export default function About() {
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl p-10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-green-200 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50" />
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-300 rounded-full translate-y-1/2 -translate-x-1/2 opacity-40" />
-              <div className="relative z-10 text-center">
-                <div className="text-8xl mb-6">🎓</div>
-                <h3 className="text-2xl font-bold text-green-800 mb-3" style={{fontFamily: 'Playfair Display, serif'}}>To Grow Academy</h3>
-                <p className="text-green-700 font-medium">Grow Your Skills. Build Your Future.</p>
-              </div>
+            <div>
+              <img
+                src={certImg}
+                alt="To Grow Academy Certificate"
+                className="w-full h-auto object-cover"
+              />
             </div>
           </motion.div>
         </div>

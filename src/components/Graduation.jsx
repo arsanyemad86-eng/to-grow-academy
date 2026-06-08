@@ -1,13 +1,40 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
+// Graduate images
+import grad1 from '../assets/images/graduates/grad-1.jpg'
+import grad2 from '../assets/images/graduates/grad-2.jpg'
+import grad3 from '../assets/images/graduates/grad-3.jpg'
+import grad4 from '../assets/images/graduates/grad-4.jpg'
+import grad5 from '../assets/images/graduates/grad-5.jpg'
+import grad6 from '../assets/images/graduates/grad-6.jpg'
+import grad7 from '../assets/images/graduates/grad-7.jpg'
+import grad8 from '../assets/images/graduates/grad-8.jpg'
+import grad9 from '../assets/images/graduates/grad-9.jpg'
+import grad10 from '../assets/images/graduates/grad-10.jpg'
+import grad11 from '../assets/images/graduates/grad-11.jpg'
+import grad12 from '../assets/images/graduates/grad-12.jpg'
+
 const batches = [
   { id: 1, name: 'Batch 01 — 2024', count: 45, emoji: '🎓', highlights: ['Front-End', 'Design', 'Marketing'] },
   { id: 2, name: 'Batch 02 — 2024', count: 60, emoji: '🏆', highlights: ['English', 'AI', 'Programming'] },
   { id: 3, name: 'Batch 03 — 2025', count: 78, emoji: '🌟', highlights: ['All Courses'] },
 ]
 
-const photos = ['🎉', '📸', '🎓', '👨‍🎓', '👩‍🎓', '🏅', '🎊', '🥇', '📜']
+const graduates = [
+  { img: grad1,  name: 'Sara Ahmed',     course: 'Front-End' },
+  { img: grad2,  name: 'Mohamed Ali',    course: 'Design' },
+  { img: grad3,  name: 'Nour Hassan',    course: 'Marketing' },
+  { img: grad4,  name: 'Omar Khaled',    course: 'Front-End' },
+  { img: grad5,  name: 'Lina Youssef',   course: 'AI' },
+  { img: grad6,  name: 'Ahmed Sami',     course: 'English' },
+  { img: grad7,  name: 'Yasmin Tarek',   course: 'Design' },
+  { img: grad8,  name: 'Karim Nasser',   course: 'Programming' },
+  { img: grad9,  name: 'Dina Ramzy',     course: 'Marketing' },
+  { img: grad10, name: 'Tamer Ashraf',   course: 'Front-End' },
+  { img: grad11, name: 'Rania Fathy',    course: 'English' },
+  { img: grad12, name: 'Youssef Magdy',  course: 'AI' },
+]
 
 export default function Graduation() {
   const [activeBatch, setActiveBatch] = useState(0)
@@ -69,24 +96,34 @@ export default function Graduation() {
             </div>
           </div>
 
-          {/* Photo Grid */}
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {photos.map((photo, i) => (
+          {/* Graduates Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {graduates.map((grad, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05, duration: 0.3 }}
-                whileHover={{ scale: 1.08 }}
-                className="bg-white rounded-2xl aspect-square flex items-center justify-center text-5xl cursor-pointer hover:shadow-lg transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
               >
-                {photo}
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={grad.img}
+                    alt={grad.name}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div className="p-3 text-center">
+                  <p className="font-semibold text-gray-800 text-sm truncate">{grad.name}</p>
+                  <p className="text-green-600 text-xs font-medium mt-0.5">{grad.course}</p>
+                </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
 
+        </motion.div>
       </div>
     </section>
   )

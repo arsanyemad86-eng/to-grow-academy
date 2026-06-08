@@ -65,7 +65,7 @@ export default function Footer() {
             {[
               { icon: '📞', value: '+20 100 000 0000' },
               { icon: '📧', value: 'info@twogrow.academy' },
-              { icon: '📍', value: 'Alexandria, Egypt' },
+              { icon: '📍', value: 'Cairo, Egypt' },
             ].map((item) => (
               <div key={item.value} className="flex items-center justify-center gap-2 text-green-200">
                 <span>{item.icon}</span>

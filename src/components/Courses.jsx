@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import imgFrontend from '../assets/images/courses/frontend.jpg'
 import imgDesign from '../assets/images/courses/design.jpg'
 import imgMarketing from '../assets/images/courses/marketing.jpg'
@@ -64,9 +65,12 @@ export default function Courses() {
                 <span className="text-xs text-gray-400 font-medium">⏱ {course.duration}</span>
                 <span className={`text-xs font-semibold px-2 py-1 rounded-full ${course.badge}`}>{course.level}</span>
               </div>
-              <button className="w-full py-2.5 border-2 border-green-200 text-green-700 rounded-xl text-sm font-semibold hover:bg-green-600 hover:text-white hover:border-green-600 transition-all duration-300">
-                View Details
-              </button>
+              <Link
+                to={`/course/${i}`}
+                className="w-full py-2.5 border-2 border-green-200 text-green-700 rounded-xl text-sm font-semibold hover:bg-green-600 hover:text-white hover:border-green-600 transition-all duration-300 block text-center mt-4"
+              >
+              View Details
+            </Link>
             </motion.div>
           ))}
         </div>
