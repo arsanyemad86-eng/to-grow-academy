@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FiArrowLeft, FiClock, FiBarChart2, FiCheckCircle } from 'react-icons/fi'
@@ -79,6 +80,10 @@ const courses = [
 ]
 
 export default function CourseDetails() {
+    
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
   const { id } = useParams()
   const course = courses[parseInt(id)]
 
