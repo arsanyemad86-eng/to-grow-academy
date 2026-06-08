@@ -57,13 +57,6 @@ export default function Trainers() {
               <div className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-5">
                 {trainer.courses} Course{trainer.courses > 1 ? 's' : ''}
               </div>
-              <div className="flex justify-center gap-3">
-                {['facebook', 'instagram', 'linkedin'].map((platform) => (
-                  <a key={platform} href="#" className="w-9 h-9 bg-white rounded-full flex items-center justify-center text-gray-400 hover:text-green-600 hover:shadow-md transition-all duration-200 text-sm font-bold">
-                    {platform === 'facebook' ? 'f' : platform === 'instagram' ? 'in' : 'li'}
-                  </a>
-                ))}
-              </div>
             </motion.div>
           ))}
         </div>
