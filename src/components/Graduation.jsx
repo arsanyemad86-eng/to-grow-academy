@@ -51,10 +51,7 @@ export default function Graduation() {
       <div className="max-w-7xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          
           className="text-center mb-16"
         >
           <span className="badge-green mb-5">Graduation Ceremonies</span>
@@ -126,8 +123,8 @@ export default function Graduation() {
           {activeTab === 'photos' ? (
             <motion.div
               key="photos"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.3 }}
               className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
@@ -151,8 +148,8 @@ export default function Graduation() {
           ) : (
             <motion.div
               key="videos"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.3 }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -185,3 +182,5 @@ export default function Graduation() {
     </section>
   )
 }
+
+

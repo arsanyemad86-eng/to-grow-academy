@@ -30,10 +30,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          
           className="text-center mb-16"
         >
           <span className="badge-green mb-5">Contact Us</span>
@@ -49,19 +46,13 @@ export default function Contact() {
 
           {/* Left — Contact details */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            
             className="space-y-4"
           >
             {contactInfo.map((item, i) => (
               <motion.div
                 key={item.label}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
+                
                 className="flex gap-4 items-center bg-gray-50 hover:bg-green-50 border border-gray-100 hover:border-green-200 rounded-2xl px-6 py-5 transition-all duration-250"
               >
                 <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-xl flex-shrink-0 shadow-sm border border-gray-100">
@@ -97,10 +88,7 @@ export default function Contact() {
 
           {/* Right — Why Choose Us */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            
             className="space-y-4"
           >
             <div
@@ -120,10 +108,7 @@ export default function Contact() {
             {reasons.map((r, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.09, duration: 0.45 }}
+                
                 className="flex gap-4 items-center bg-gray-50 hover:bg-green-50 border border-gray-100 hover:border-green-200 rounded-2xl px-6 py-4 transition-all duration-250"
               >
                 <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl flex-shrink-0 shadow-sm border border-gray-100">
@@ -139,3 +124,5 @@ export default function Contact() {
     </section>
   )
 }
+
+

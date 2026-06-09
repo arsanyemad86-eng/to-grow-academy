@@ -22,10 +22,7 @@ export default function Trainers() {
       <div className="max-w-7xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          
           className="text-center mb-16"
         >
           <span className="badge-green mb-5">Our Trainers</span>
@@ -39,15 +36,8 @@ export default function Trainers() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {trainers.map((trainer, i) => (
-            <motion.div
-              key={trainer.name}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.09, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -6 }}
-              className="bg-white border border-gray-100 hover:border-green-200 rounded-2xl p-8 text-center hover:shadow-xl hover:shadow-green-50 transition-all duration-300 group"
-            >
+            <motion.div key={trainer.name}>
+  <div className="bg-white border border-gray-100 hover:border-green-200 rounded-2xl p-8 text-center hover:shadow-xl hover:shadow-green-50 hover:-translate-y-1.5 transition-all duration-200 group">
               <div className="relative inline-block mb-5">
                 <img
                   src={trainer.photo}
@@ -64,6 +54,7 @@ export default function Trainers() {
               <div className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full border border-green-100">
                 {trainer.courses} Course{trainer.courses > 1 ? 's' : ''}
               </div>
+            </div>
             </motion.div>
           ))}
         </div>
@@ -72,3 +63,5 @@ export default function Trainers() {
     </section>
   )
 }
+
+

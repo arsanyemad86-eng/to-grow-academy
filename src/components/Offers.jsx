@@ -54,10 +54,7 @@ export default function Offers() {
       <div className="max-w-7xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          
           className="text-center mb-16"
         >
           <span className="badge-green mb-5">
@@ -73,15 +70,8 @@ export default function Offers() {
 
         <div className="grid md:grid-cols-3 gap-7">
           {offers.map((offer, i) => (
-            <motion.div
-              key={offer.title}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.12, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -6 }}
-              className="bg-white border border-gray-100 hover:border-green-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-green-50 transition-all duration-300"
-            >
+            <motion.div key={offer.title}>
+              <div className="bg-white border border-gray-100 hover:border-green-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-green-50 hover:-translate-y-1.5 transition-all duration-200">
               {/* Card header */}
               <div className="relative bg-gray-900 px-6 py-7">
                 <span className={`absolute top-4 right-4 ${offer.badgeColor} text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider`}>
@@ -111,6 +101,7 @@ export default function Offers() {
                   Register Now <HiArrowRight size={15} />
                 </button>
               </div>
+            </div>
             </motion.div>
           ))}
         </div>
@@ -119,3 +110,5 @@ export default function Offers() {
     </section>
   )
 }
+
+

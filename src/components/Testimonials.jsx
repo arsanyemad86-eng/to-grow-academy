@@ -20,10 +20,7 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          
           className="text-center mb-16"
         >
           <span className="badge-green mb-5">Student Reviews</span>
@@ -121,3 +118,5 @@ export default function Testimonials() {
     </section>
   )
 }
+
+

@@ -25,10 +25,7 @@ const courses = [
 function CourseCard({ course, courseIndex }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ delay: courseIndex * 0.06, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      
       className="relative w-full h-full rounded-2xl overflow-hidden cursor-pointer group"
     >
       {/* Background image with zoom on hover */}
@@ -80,10 +77,7 @@ export default function Courses() {
 
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          
           className="text-center mb-14"
         >
           <span className="badge-green-dark mb-6">
@@ -128,3 +122,5 @@ export default function Courses() {
     </section>
   )
 }
+
+

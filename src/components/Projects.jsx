@@ -47,10 +47,7 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          
           className="text-center mb-12"
         >
           <span className="badge-green mb-5">Student Work</span>
@@ -64,10 +61,7 @@ export default function Projects() {
 
         {/* Filter bar */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
           {categories.map((cat) => (
@@ -98,25 +92,25 @@ export default function Projects() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.94 }}
                   transition={{ delay: i * 0.06, duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ y: -5 }}
-                  className="bg-white border border-gray-100 hover:border-green-200 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-green-50 transition-all duration-300 group"
                 >
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${t.cls}`}>
-                        {t.label}
-                      </span>
+                  <div className="bg-white border border-gray-100 hover:border-green-200 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-green-50 hover:-translate-y-1.5 transition-all duration-200 group">
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${t.cls}`}>
+                          {t.label}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="p-5">
-                    <p className="text-xs text-gray-400 font-medium mb-2 uppercase tracking-wider">{project.student}</p>
-                    <h3 className="text-base font-bold text-gray-900 mb-1.5 tracking-tight">{project.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{project.description}</p>
+                    <div className="p-5">
+                      <p className="text-xs text-gray-400 font-medium mb-2 uppercase tracking-wider">{project.student}</p>
+                      <h3 className="text-base font-bold text-gray-900 mb-1.5 tracking-tight">{project.title}</h3>
+                      <p className="text-gray-500 text-sm leading-relaxed">{project.description}</p>
+                    </div>
                   </div>
                 </motion.div>
               )
@@ -128,3 +122,5 @@ export default function Projects() {
     </section>
   )
 }
+
+

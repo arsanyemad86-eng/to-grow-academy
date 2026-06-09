@@ -19,7 +19,7 @@
     font-family: 'DM Sans', sans-serif;
     background-color: #ffffff;
     color: #0f172a;
-    overflow-x: hidden;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -27,6 +27,12 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'DM Sans', sans-serif;
     letter-spacing: -0.03em;
+  }
+
+  img {
+    will-change: auto;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 }
 
@@ -60,8 +66,4 @@
   .badge-green-dark {
     @apply inline-flex items-center gap-1.5 bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-semibold px-4 py-2 rounded-full;
   }
-}
-
-img {
-  will-change: auto;
 }

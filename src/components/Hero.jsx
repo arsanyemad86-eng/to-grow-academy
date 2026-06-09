@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiArrowRight, HiAcademicCap, HiPlay } from 'react-icons/hi'
 import heroImg from '../assets/images/hero/hero-students.jpg'
+import heroVideo from '../assets/images/hero/IMG_8409.MOV'
 
 const stats = [
   { value: '8+', label: 'Courses' },
@@ -11,6 +12,9 @@ const stats = [
 ]
 
 export default function Hero() {
+
+  const [videoOpen, setVideoOpen] = useState(false)
+
   return (
     <section
       id="home"
@@ -41,46 +45,45 @@ export default function Hero() {
       />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center py-32 lg:py-24">
+        <div className="grid lg:grid-cols-2 gap-16 items-center py-20 lg:py-16">
 
           {/* Left — Text content */}
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium px-4 py-2 rounded-full mb-8"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium px-4 py-2 rounded-full mb-4"
             >
               <HiAcademicCap size={15} />
               <span>Egypt's Leading Tech & Creative Academy</span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 35 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-black text-white leading-[1.03] mb-6"
-              style={{ fontSize: 'clamp(3rem, 7.5vw, 5.5rem)' }}
+              className="text-3xl md:text-4xl font-black text-white leading-tight mb-6"
             >
-              Build Skills.<br />
-              <span className="text-gradient-light">Build Your</span><br />
-              Future.
+              Start Your Future{' '}
+              <span className="text-gradient-light">with Two Grow</span>{' '}
+              Academy
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.22 }}
-              className="text-green-100/75 text-lg md:text-xl leading-relaxed mb-10 max-w-lg"
+              className="text-green-100/75 text-lg md:text-xl leading-relaxed mb-6 max-w-lg"
             >
               Learn from industry experts, build real projects, and launch your career with Egypt's most practical educational academy.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.32 }}
-              className="flex flex-wrap gap-4 mb-14"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 mb-8"
             >
               <motion.a
                 href="#contact"
@@ -96,22 +99,30 @@ export default function Hero() {
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/25 text-white font-semibold px-8 py-4 rounded-2xl hover:bg-white/20 transition-all text-base"
               >
-                <HiPlay size={16} /> Browse Courses
+                <HiPlay size={16} /> View Courses
               </motion.a>
+              <motion.button
+                onClick={() => setVideoOpen(true)}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/25 text-white font-semibold px-8 py-4 rounded-2xl hover:bg-white/20 transition-all text-base"
+              >
+                <HiPlay size={16} /> See How It Works
+              </motion.button>
             </motion.div>
 
             {/* Stats row */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.42 }}
               className="grid grid-cols-4 gap-6"
             >
               {stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 + i * 0.07, duration: 0.4 }}
                   className="text-center"
                 >
@@ -168,6 +179,29 @@ export default function Hero() {
           <path d="M0 64L1440 64L1440 32C1200 64 900 0 720 18C540 36 240 64 0 32L0 64Z" fill="white" />
         </svg>
       </div>
+      {videoOpen && (
+        <div
+          className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setVideoOpen(false)}
+        >
+          <div className="relative w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setVideoOpen(false)}
+              className="absolute -top-10 right-0 text-white/70 hover:text-white text-sm font-medium"
+            >
+              ✕ Close
+            </button>
+            <video
+              src={heroVideo}
+              controls
+              autoPlay
+              className="w-full rounded-2xl shadow-2xl"
+            />
+          </div>
+        </div>
+      )}
     </section>
   )
 }
+
+
