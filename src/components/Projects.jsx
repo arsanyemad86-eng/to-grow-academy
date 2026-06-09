@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import imgP1 from '../assets/images/projects/project-1.jpg'
 import imgP2 from '../assets/images/projects/project-2.jpg'
 import imgP3 from '../assets/images/projects/project-3.jpg'
@@ -11,12 +11,12 @@ import imgP8 from '../assets/images/projects/project-8.jpg'
 import imgP9 from '../assets/images/projects/project-9.jpg'
 
 const categories = [
-  { id: 'all', label: 'All Projects' },
-  { id: 'programming', label: '💻 Programming' },
-  { id: 'design', label: '🎨 Design' },
-  { id: 'marketing', label: '📈 Marketing' },
-  { id: 'english', label: '🗣️ English' },
-  { id: 'ai', label: '🤖 AI' },
+  { id: 'all', label: 'All' },
+  { id: 'programming', label: 'Programming' },
+  { id: 'design', label: 'Design' },
+  { id: 'marketing', label: 'Marketing' },
+  { id: 'english', label: 'English' },
+  { id: 'ai', label: 'AI' },
 ]
 
 const projects = [
@@ -24,87 +24,104 @@ const projects = [
   { id: 2, category: 'programming', title: 'Task Manager App', student: 'Omar Samir', type: 'link', image: imgP2, description: 'React app with authentication and real-time updates.' },
   { id: 3, category: 'design', title: 'Brand Identity', student: 'Sara Mohamed', type: 'image', image: imgP3, description: 'Complete brand identity for a local restaurant.' },
   { id: 4, category: 'design', title: 'Social Media Kit', student: 'Lina Khaled', type: 'image', image: imgP4, description: 'Full social media template kit for a fashion brand.' },
-  { id: 5, category: 'marketing', title: 'Facebook Ad Campaign', student: 'Youssef Ali', type: 'image', image: imgP5, description: 'Paid campaign that achieved 300% ROAS.' },
+  { id: 5, category: 'marketing', title: 'Facebook Ad Campaign', student: 'Youssef Ali', type: 'image', image: imgP9, description: 'Paid campaign that achieved 300% ROAS.' },
   { id: 6, category: 'marketing', title: 'SEO Case Study', student: 'Nour Ahmed', type: 'video', image: imgP6, description: 'Ranking a local business from page 5 to page 1.' },
   { id: 7, category: 'english', title: 'Public Speech', student: 'Rana Hossam', type: 'video', image: imgP7, description: '5-minute presentation on climate change.' },
   { id: 8, category: 'english', title: 'Business Email Writing', student: 'Karim Tarek', type: 'link', image: imgP8, description: 'Professional business correspondence portfolio.' },
-  { id: 9, category: 'ai', title: 'AI Content System', student: 'Mariam Saad', type: 'video', image: imgP9, description: 'Automated content creation pipeline using AI tools.' },
+  { id: 9, category: 'ai', title: 'AI Content System', student: 'Mariam Saad', type: 'video', image: imgP5, description: 'Automated content creation pipeline using AI tools.' },
 ]
+
+const typeStyles = {
+  video: { label: '▶ Video', cls: 'bg-red-500 text-white' },
+  image: { label: '🖼 Image', cls: 'bg-blue-500 text-white' },
+  link: { label: '🔗 Live', cls: 'bg-violet-500 text-white' },
+}
 
 export default function Projects() {
   const [active, setActive] = useState('all')
 
-  const filtered = active === 'all' ? projects : projects.filter(p => p.category === active)
+  const filtered = active === 'all' ? projects : projects.filter((p) => p.category === active)
 
   return (
-    <section id="projects" className="py-24 px-6 md:px-12 lg:px-20 bg-white">
+    <section id="projects" className="py-28 px-6 md:px-12 lg:px-20 bg-gray-50">
       <div className="max-w-7xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-12"
         >
-          <span className="inline-block bg-green-100 text-green-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-            Student Work
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
-            Real Projects by <span className="text-green-600">Real Students</span>
+          <span className="badge-green mb-5">Student Work</span>
+          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mt-5 mb-5 leading-tight">
+            Real Projects by <span className="text-gradient">Real Students</span>
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
             See what our graduates built during and after their courses.
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {/* Filter bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-wrap justify-center gap-2 mb-12"
+        >
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActive(cat.id)}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${active === cat.id ? 'bg-green-600 text-white shadow-md' : 'bg-green-50 text-gray-600 hover:bg-green-100'}`}
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+                active === cat.id
+                  ? 'bg-green-600 text-white shadow-lg shadow-green-600/25'
+                  : 'bg-white border border-gray-200 text-gray-600 hover:border-green-300 hover:text-green-700'
+              }`}
             >
               {cat.label}
             </button>
           ))}
-        </div>
+        </motion.div>
 
+        {/* Projects grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((project, i) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.08, duration: 0.4 }}
-              whileHover={{ y: -4 }}
-              className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100"
-            >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-3 left-3">
-                  <span className={`text-xs font-bold px-2 py-1 rounded-full ${
-                    project.type === 'video' ? 'bg-red-500 text-white' :
-                    project.type === 'image' ? 'bg-blue-500 text-white' :
-                    'bg-purple-500 text-white'
-                  }`}>
-                    {project.type === 'video' ? '▶ Video' : project.type === 'image' ? '🖼 Image' : '🔗 Live'}
-                  </span>
-                </div>
-              </div>
-              <div className="p-5">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs text-gray-400 font-medium">{project.student}</span>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1">{project.title}</h3>
-                <p className="text-gray-500 text-sm">{project.description}</p>
-              </div>
-            </motion.div>
-          ))}
+          <AnimatePresence mode="popLayout">
+            {filtered.map((project, i) => {
+              const t = typeStyles[project.type]
+              return (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.94 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.94 }}
+                  transition={{ delay: i * 0.06, duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -5 }}
+                  className="bg-white border border-gray-100 hover:border-green-200 rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-green-50 transition-all duration-300 group"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${t.cls}`}>
+                        {t.label}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <p className="text-xs text-gray-400 font-medium mb-2 uppercase tracking-wider">{project.student}</p>
+                    <h3 className="text-base font-bold text-gray-900 mb-1.5 tracking-tight">{project.title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed">{project.description}</p>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </AnimatePresence>
         </div>
 
       </div>

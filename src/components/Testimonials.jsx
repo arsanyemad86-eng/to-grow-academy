@@ -12,86 +12,107 @@ const testimonials = [
 
 export default function Testimonials() {
   const [active, setActive] = useState(0)
-
-  const next = () => setActive((prev) => (prev + 1) % testimonials.length)
-  const prev = () => setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  const next = () => setActive((p) => (p + 1) % testimonials.length)
+  const prev = () => setActive((p) => (p - 1 + testimonials.length) % testimonials.length)
 
   return (
-    <section id="testimonials" className="py-24 px-6 md:px-12 lg:px-20 bg-white">
+    <section id="testimonials" className="py-28 px-6 md:px-12 lg:px-20 bg-gray-50">
       <div className="max-w-7xl mx-auto">
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-16"
         >
-          <span className="inline-block bg-green-100 text-green-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-            Student Reviews
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4" style={{fontFamily: 'Playfair Display, serif'}}>
-            What Our <span className="text-green-600">Students Say</span>
+          <span className="badge-green mb-5">Student Reviews</span>
+          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mt-5 mb-5 leading-tight">
+            What Our <span className="text-gradient">Students Say</span>
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
             Real results from real students who transformed their careers.
           </p>
         </motion.div>
 
-        {/* Main Testimonial */}
+        {/* Main testimonial card */}
         <div className="max-w-3xl mx-auto mb-12">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="bg-green-50 rounded-3xl p-10 text-center relative"
+              initial={{ opacity: 0, y: 22, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -22, scale: 0.98 }}
+              transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-white border border-gray-100 rounded-3xl p-10 text-center relative shadow-xl shadow-gray-100"
             >
-              <div className="text-6xl mb-6">{testimonials[active].emoji}</div>
+              {/* Decorative quote mark */}
+              <div className="text-[80px] leading-none text-green-100 font-black select-none absolute top-5 left-8 pointer-events-none">
+                "
+              </div>
+
+              <div className="text-5xl mb-5 relative z-10">{testimonials[active].emoji}</div>
+
               <div className="flex justify-center gap-1 mb-6">
-                {[...Array(testimonials[active].rating)].map((_, i) => (
-                  <span key={i} className="text-yellow-400 text-2xl">★</span>
+                {Array.from({ length: testimonials[active].rating }).map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-xl">★</span>
                 ))}
               </div>
-              <p className="text-gray-700 text-lg leading-relaxed mb-8 italic">
+
+              <p className="text-gray-700 text-lg leading-relaxed mb-8 relative z-10">
                 "{testimonials[active].comment}"
               </p>
+
               <div>
-                <p className="font-bold text-gray-900 text-xl">{testimonials[active].name}</p>
-                <p className="text-green-600 font-medium">{testimonials[active].course}</p>
+                <p className="font-black text-gray-900 text-xl tracking-tight">{testimonials[active].name}</p>
+                <p className="text-green-600 font-semibold text-sm mt-1">{testimonials[active].course}</p>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Controls */}
+          {/* Navigation */}
           <div className="flex items-center justify-center gap-6 mt-8">
-            <button onClick={prev} className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-700 hover:bg-green-600 hover:text-white transition-all duration-300 text-xl font-bold">
+            <button
+              onClick={prev}
+              className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-green-600 hover:text-white hover:border-green-600 transition-all duration-200 font-bold shadow-sm"
+            >
               ←
             </button>
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
               {testimonials.map((_, i) => (
-                <button key={i} onClick={() => setActive(i)} className={`w-3 h-3 rounded-full transition-all duration-300 ${i === active ? 'bg-green-600 w-8' : 'bg-green-200'}`} />
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className={`h-2 rounded-full transition-all duration-300 ${i === active ? 'bg-green-600 w-8' : 'bg-gray-200 hover:bg-gray-300 w-2'}`}
+                />
               ))}
             </div>
-            <button onClick={next} className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-700 hover:bg-green-600 hover:text-white transition-all duration-300 text-xl font-bold">
+            <button
+              onClick={next}
+              className="w-11 h-11 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-green-600 hover:text-white hover:border-green-600 transition-all duration-200 font-bold shadow-sm"
+            >
               →
             </button>
           </div>
         </div>
 
-        {/* Mini Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {/* Selector grid */}
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
           {testimonials.map((t, i) => (
             <motion.button
               key={t.name}
               onClick={() => setActive(i)}
               whileHover={{ scale: 1.05 }}
-              className={`p-4 rounded-2xl text-center transition-all duration-300 ${i === active ? 'bg-green-600 text-white shadow-lg' : 'bg-green-50 hover:bg-green-100'}`}
+              className={`p-4 rounded-2xl text-center transition-all duration-200 ${
+                i === active
+                  ? 'bg-green-600 text-white shadow-lg shadow-green-600/25'
+                  : 'bg-white border border-gray-100 hover:border-green-200 text-gray-700'
+              }`}
             >
               <div className="text-2xl mb-2">{t.emoji}</div>
-              <p className={`text-xs font-bold ${i === active ? 'text-white' : 'text-gray-700'}`}>{t.name}</p>
+              <p className={`text-[11px] font-bold leading-tight ${i === active ? 'text-white' : 'text-gray-700'}`}>
+                {t.name.split(' ')[0]}
+              </p>
             </motion.button>
           ))}
         </div>
